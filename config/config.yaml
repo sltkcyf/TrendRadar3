@@ -59,24 +59,22 @@ platforms:
       name: "今日头条"
     - id: "baidu"
       name: "百度热搜"
-    - id: "wallstreetcn-hot"
-      name: "华尔街见闻"
-    - id: "thepaper"
-      name: "澎湃新闻"
     - id: "bilibili-hot-search"
       name: "bilibili 热搜"
-    - id: "cls-hot"
-      name: "财联社热门"
-    - id: "ifeng"
-      name: "凤凰网"
-    - id: "tieba"
-      name: "贴吧"
-    - id: "weibo"
-      name: "微博"
-    - id: "douyin"
-      name: "抖音"
     - id: "zhihu"
       name: "知乎"
+    - id: "ithome"
+      name: "IT之家"
+    - id: "juejin"
+      name: "掘金"
+    - id: "github"
+      name: "GitHub"
+    - id: "solidot"
+      name: "Solidot"
+    - id: "v2ex"
+      name: "V2EX"
+    - id: "sspai"
+      name: "少数派"
 
 
 
@@ -112,20 +110,37 @@ rss:
   # - 不配置：使用全局 freshness_filter.max_age_days（默认 3 天）
   # - 正整数：覆盖全局设置，只推送此天数内的文章
   # - 0：禁用此频道的新鲜度过滤，推送所有文章
-  feeds:
-    - id: "hacker-news"
-      name: "Hacker News"
-      url: "https://hnrss.org/frontpage"
+ feeds:
+    - id: "openai-blog"
+      name: "OpenAI 官方博客"
+      url: "https://openai.com/news/rss.xml"
+      # max_age_days: 7
+
+    - id: "langchain-blog"
+      name: "LangChain 博客"
+      url: "https://blog.langchain.dev/rss/"
+      # max_age_days: 3
 
     - id: "ruanyifeng"
       name: "阮一峰的网络日志"
       url: "http://www.ruanyifeng.com/blog/atom.xml"
-      enabled: false                  # 禁用
-      # max_age_days: 3               # 示例：推送 3 天内的文章（更新较慢的博客）
-     
-    - id: "yahoo-finance"
-      name: "雅虎财经"
-      url: "https://finance.yahoo.com/news/rssindex"
+      # max_age_days: 7               # 示例：推送7天内的文章（更新较慢的博客）
+    
+    - id: "36kr-flashes"
+      name: "36氪快讯"
+      url: "www.36kr.com/feed"
+      # max_age_days: 1
+      
+    - id: "kaiyuanzhongguo"
+      name: "开源中国"
+      url: "https://rsshub.app/oschina/news/project"
+      # max_age_days: 3
+
+    - id: "arxiv-ai"
+      name: "arXivAI 论文"
+      url: "https://rss.arxiv.org/rss/cs.AI"
+      # max_age_days: 1
+
 
     # 自定义源示例
     # - id: "custom-feed"
@@ -164,7 +179,7 @@ report:
 
   rank_threshold: 5                   # 排名高亮阈值（影响展示强调，不改变抓取范围）
 
-  max_news_per_keyword: 0             # 每个关键词/标签最大显示数量（0=不限制，仅影响展示裁剪）
+  max_news_per_keyword: 5             # 每个关键词/标签最大显示数量（0=不限制，仅影响展示裁剪）
 
 
 # ===============================================================
@@ -278,8 +293,8 @@ display:
   #   - AI 分析：由 ai_analysis.include_standalone 开关控制，将完整数据送入 AI 做深度分析
   # 两者共享此处的平台/RSS 配置，但开关互相独立（可只开 AI 分析、不推送展示）
   standalone:
-    platforms: ["zhihu", "wallstreetcn-hot"]     # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
-    rss_feeds: []                     # RSS 源 ID 列表（如 ["hacker-news"]）
+    platforms: ["zhihu", "百度热搜","bilibili 热搜","ithome","juejin","GitHub","solidot","v2ex","sspai","toutiao"]     # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
+    rss_feeds: ["openai-blog","langchain-blog","ruanyifeng","36kr-flashes","kaiyuanzhongguo","arxiv-ai"]                     # RSS 源 ID 列表（如 ["hacker-news"]）
     max_items: 20                     # 每个源最多展示条数（0=不限制）
 
 
@@ -417,7 +432,7 @@ ai:
   
   model: "deepseek/deepseek-chat"
 
-  api_key: ""                       # API Key（建议使用环境变量 AI_API_KEY）
+  api_key: "sk-157e79f8313a4d88add899c3a8333372"                       # API Key（建议使用环境变量 AI_API_KEY）
   
   api_base: ""                      # 自定义 API 端点（可选，大多数情况留空）
                                     # 示例: https://api.openai.com/v1（自建代理或兼容接口）
