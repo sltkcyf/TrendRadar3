@@ -121,6 +121,7 @@ sensational
 GPT
 Claude
 Gemini
+xiaomimimo
 +技术
 +发布
 +更新
@@ -141,7 +142,12 @@ Agent
 openclaw
 clawbot
 coPaw
-Coze
+Codex
+opencode
+
+#CodingPlan相关
+Codingplan
+VideCoding
 
 # 编程相关AI资讯
 GitHub Copilot => 编程助手Copilot
