@@ -151,8 +151,11 @@ VideCoding
 
 # 编程相关AI资讯
 GitHub Copilot => 编程助手Copilot
-Cursor
-Codeium
+ppt
+powerpoint
+html
+skills
+agent
 代码生成
 AI编程
 编程助手
